@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mechanic/Electrician Assignment Form</title>
     <style>
-        /* Optional basic styling to make it look clean without <br> tags */
         .form-group {
             margin-bottom: 15px;
         }
@@ -23,42 +21,90 @@
             vertical-align: top;
             height: 60px;
         }
+        button {
+            padding: 8px 15px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
 
-    <form action="#" method="POST">
-       
+    <form id="assignmentForm">
+        
         <h4>Mechanic/Electrician Assignment Form to Respond to Inspection Results</h4>
         <div class="form-group">
             <label for="assigned-by">Team Leader/Senior:</label>
-            <input type="text" id="assigned-by" name="assigned_by">
+            <input type="text" id="assigned-by" name="assigned_by" required>
         </div>
 
         <div class="form-group">
             <label for="assignee">Assigned Electrician/Mechanic:</label>
-            <input type="text" id="assignee" name="assignee">
+            <input type="text" id="assignee" name="assignee" required>
         </div>
 
         <div class="form-group">
             <label for="machine-name">Machine Name:</label>
-            <input type="text" id="machine-name" name="machine_name">
+            <input type="text" id="machine-name" name="machine_name" required>
         </div>
 
         <div class="form-group">
             <label for="location">Location:</label>
-            <input type="text" id="location" name="location">
+            <input type="text" id="location" name="location" required>
         </div>
 
         <div class="form-group">
             <label for="problem">Problem Encountered:</label>
-            <textarea id="problem" name="problem"></textarea>
+            <textarea id="problem" name="problem" required></textarea>
         </div>
         
         <div class="form-group">
-            <button type="submit">Submit Assignment</button>
+            <button type="submit" id="submitBtn">Submit Assignment</button>
         </div>
     </form>
+
+    <script>
+        // Paste your deployed Google Web App URL here
+        const WEB_APP_URL = 'YOUR_WEB_APP_URL_HERE'; 
+
+        document.getElementById('assignmentForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // Stop the page from reloading
+            
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
+
+            // Gather data from the form fields
+            const formData = {
+                assigned_by: document.getElementById('assigned-by').value,
+                assignee: document.getElementById('assignee').value,
+                machine_name: document.getElementById('machine-name').value,
+                location: document.getElementById('location').value,
+                problem: document.getElementById('problem').value
+            };
+
+            // Send data to Google Apps Script
+            fetch(WEB_APP_URL, {
+                method: 'POST',
+                mode: 'no-cors', // Critical for cross-domain requests to Google Scripts
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(() => {
+                alert('Assignment successfully recorded in Google Sheets!');
+                document.getElementById('assignmentForm').reset(); // Clear form
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Something went wrong. Please try again.');
+            })
+            .finally(() => {
+                submitBtn.textContent = 'Submit Assignment';
+                submitBtn.disabled = false;
+            });
+        });
+    </script>
 
 </body>
 </html>
