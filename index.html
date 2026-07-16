@@ -40,12 +40,12 @@
 
         <div class="form-group">
             <label for="assignee">Assigned Electrician/Mechanic:</label>
-            <!-- Fixed the broken ID here -->
             <input type="text" id="assignee" name="Assigned Electrician/Mechanic" required>
         </div>
 
         <div class="form-group">
             <label for="machine_name">Machine Name:</label>
+            <!-- Fixed: Matches the JavaScript query variable correctly now -->
             <input type="text" id="machine_name" name="machine_name" required>
         </div>
 
@@ -65,7 +65,7 @@
     </form>
 
     <script>
-        // Paste your deployed Google Web App URL here
+        // PASTE YOUR GOOGLE WEB APP URL HERE:
         const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbxVaYXagBeRkPC1f_u2TqOkQ7daoTHunkYf49pyBJEvTnOtcmzh3TOJZE41dIVxuO043w/exec'; 
 
         document.getElementById('assignmentForm').addEventListener('submit', function(e) {
@@ -75,11 +75,11 @@
             submitBtn.textContent = 'Sending...';
             submitBtn.disabled = true;
 
-            // Gather data from the form fields (Now matching the HTML IDs perfectly!)
+            // Gather data from the form fields (Fixed the machine_name id typo!)
             const formData = {
                 assigned_by: document.getElementById('assigned-by').value,
                 assignee: document.getElementById('assignee').value,
-                machine_name: document.getElementById('machine-name').value,
+                machine_name: document.getElementById('machine_name').value,
                 location: document.getElementById('location').value,
                 problem: document.getElementById('problem').value
             };
