@@ -1,44 +1,64 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Mechanic/Electrician Assignment Form</title>
     <style>
-        body{
-            background-color: green;
+        /* Optional basic styling to make it look clean without <br> tags */
+        .form-group {
+            margin-bottom: 15px;
         }
-        button{background-color: rgba(19, 5, 124, 0.925);
-        color: white;
-        width: 70px;
-        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-        font-size:medium;
-        border-radius: 35px;
-        height: 70px;
-        margin-top: 20px;
-        margin-left: 20px;
-    }
-    button:hover{
-        background-color: red;
-    }
-    .div1{
-        background-color: rgba(219, 7, 238, 0.858);
-        height: 500px;
-        width: 350px;
-        border-radius: 30px;
-        border: 3px solid;
-        border-color: aliceblue;
-        
-    }
+        label {
+            display: inline-block;
+            width: 200px;
+            font-weight: bold;
+        }
+        input, textarea {
+            padding: 5px;
+            width: 250px;
+        }
+        textarea {
+            vertical-align: top;
+            height: 60px;
+        }
     </style>
 </head>
 <body>
-    <div class="div1">
-    <h2 style="text-align: center;color: rgb(4, 23, 132);">Technic Director</h2>
-    <a href="https://etachali2-prog.github.io/report/"><button>Report</button></a>
-    <a href="file:///C:/Users/dula/Desktop/TechApp/display.html"><button>Show</button></a>
-    <h4>Formaatiin kun kan ISO9001 iratti hundaa'e gara Online jijjiirree akka fayyadamnuuf. fooyya'uu qaba kan jettan yaada qabdan akka nuuf qooddan kabajaan Gaafanna.kan hafan illee iddoo tokkotti bifa salphaa ta'een akka fayyadamuun danda'amutti qophaa'aa jira."ይህ በ ISO 9001 ላይ የተመሠረተ ፎርማት ወደ ኦንላይን (Online) ቀይረን እንድንጠቀምበት የተዘጋጀ ነው። መሻሻል አለበት የምትሉትን ሃሳብ እንድታካፍሉን በትሕትና እንጠይቃለን። የቀሩትንም በአንድ ቦታ በቀላል መንገድ ለመጠቀም እንዲቻል በማዘጋጀት ላይ እንገኛለን።"  </h4>
-    <h5 style="margin-left: 250px;">Dula.E</h5>
-    </div>
+
+    <form action="#" method="POST">
+       
+        <h4>Mechanic/Electrician Assignment Form to Respond to Inspection Results</h4>
+        <div class="form-group">
+            <label for="assigned-by">Team Leader/Senior:</label>
+            <input type="text" id="assigned-by" name="assigned_by">
+        </div>
+
+        <div class="form-group">
+            <label for="assignee">Assigned Electrician/Mechanic:</label>
+            <input type="text" id="assignee" name="assignee">
+        </div>
+
+        <div class="form-group">
+            <label for="machine-name">Machine Name:</label>
+            <input type="text" id="machine-name" name="machine_name">
+        </div>
+
+        <div class="form-group">
+            <label for="location">Location:</label>
+            <input type="text" id="location" name="location">
+        </div>
+
+        <div class="form-group">
+            <label for="problem">Problem Encountered:</label>
+            <textarea id="problem" name="problem"></textarea>
+        </div>
+        
+        <div class="form-group">
+            <button type="submit">Submit Assignment</button>
+        </div>
+    </form>
+
 </body>
 </html>
